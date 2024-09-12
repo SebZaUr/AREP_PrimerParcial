@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Form with GET</h1>
+        <form action="/calulardora">
+            <label for="operation">Name:</label><br>
+            <input type="text" id="operation" name="operation" value="sum,3,5"><br><br>
+            <input type="button" value="Submit" onclick="calculate()">
+        </form>
+        <div id="getrespmsg"></div>
+
+        <script>
+            function calculate(name){
+                let url = "/hellopost?name=" + name.value;
+
+                fetch (url, {method: 'POST'})
+                    .then(x => x.text())
+                    .then(y => document.getElementById("postrespmsg").innerHTML = y);
+            }
+        </script>
+    </body>
+</html>
